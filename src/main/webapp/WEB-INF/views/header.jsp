@@ -59,7 +59,7 @@
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/core-style.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css">
 
     <!-- Responsive CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/responsive.css" rel="stylesheet">
@@ -85,7 +85,7 @@
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
                                             <li>
-                                                <a href="#" class="image"><img src="img/product-img/product-10.jpg" class="cart-thumb" alt=""></a>
+                                                <a href="#" class="image"><img src="${pageContext.request.contextPath}/resources/img/product-img/product-10.jpg" class="cart-thumb" alt=""></a>
                                                 <div class="cart-item-desc">
                                                     <h6><a href="#">Women's Fashion</a></h6>
                                                     <p>1x - <span class="price">$10</span></p>
@@ -93,7 +93,7 @@
                                                 <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
                                             </li>
                                             <li>
-                                                <a href="#" class="image"><img src="img/product-img/product-11.jpg" class="cart-thumb" alt=""></a>
+                                                <a href="#" class="image"><img src="${pageContext.request.contextPath}/resources/img/product-img/product-11.jpg" class="cart-thumb" alt=""></a>
                                                 <div class="cart-item-desc">
                                                     <h6><a href="#">Women's Fashion</a></h6>
                                                     <p>1x - <span class="price">$10</span></p>
@@ -166,12 +166,12 @@
             </div>
         </header>
             <!-- jQuery (Necessary for All JavaScript Plugins) -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
     <!-- Plugins js -->
-    <script src="js/plugins.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/plugins.js"></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/active.js"></script>
