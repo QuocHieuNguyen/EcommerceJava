@@ -21,7 +21,7 @@
 	</bean>
 	    <mvc:resources mapping="/resources/**" location="/resources/"  
     cache-period="31556926"/>
-	<bean id="dataSource"
+<!-- 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
@@ -29,5 +29,9 @@
 		<property name="username" value="root" />
 		<property name="password" value="12345678Ok" />
 	</bean>
+	   Definition for userJDBCTemplate bean
+   <bean id="userJDBCTemplate"   class="main.java.com.ecommerce.userjdbctemplate.UserJDBCTemplate">
+      <property name="dataSource"  ref="dataSource" />    
+   </bean> -->  
 
 </beans>

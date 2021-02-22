@@ -15,9 +15,6 @@
 
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- Activates scanning of @Repository and @Service and @Component -->
-
-    <context:component-scan base-package="main.java.com.ecommerce" />
     	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -30,5 +27,5 @@
    <bean id="userJDBCTemplate"   class="main.java.com.ecommerce.userjdbctemplate.UserJDBCTemplate">
       <property name="dataSource"  ref="dataSource" />    
    </bean>
-	
+
 </beans>

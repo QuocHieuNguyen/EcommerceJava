@@ -1,4 +1,4 @@
-package main.java.com.yrrhelp.models;
+package main.java.com.ecommerce.models;
 
 public class Product {
 

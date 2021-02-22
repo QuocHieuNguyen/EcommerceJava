@@ -1,4 +1,4 @@
-package main.java.com.yrrhelp.services;
+package main.java.com.ecommerce.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
-import main.java.com.yrrhelp.models.Product;
+import main.java.com.ecommerce.models.Product;
 
 
 

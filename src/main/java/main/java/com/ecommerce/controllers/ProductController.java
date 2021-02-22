@@ -1,4 +1,4 @@
-package main.java.com.yrrhelp.controllers;
+package main.java.com.ecommerce.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import main.java.com.yrrhelp.services.ProductService;
+import main.java.com.ecommerce.services.ProductService;
 
 
 
