@@ -23,6 +23,7 @@
                 <tr><td>Description:</td><td><form:input path="description" value="${user.getDescription()}" /></td></tr> --%>
                 <tr><td><input type="submit" value="Submit" /></td></tr>
             </table>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form:form>
     </body>
 </html>

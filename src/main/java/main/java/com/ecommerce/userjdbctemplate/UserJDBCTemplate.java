@@ -7,19 +7,20 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import main.java.com.ecommerce.dao.UserDao;
 import main.java.com.ecommerce.mapper.UserMapper;
 import main.java.com.ecommerce.models.User;
 
-public class UserJDBCTemplate {
+public class UserJDBCTemplate implements UserDao {
 
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplateObject;
-
+    @Override
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
-
+    @Override
     public boolean create(User user) {
         String SQL = "select * from users where username = ?";
         List<User> result = jdbcTemplateObject.query(SQL,new Object[]{user.getUsername()}, new UserMapper());
@@ -33,14 +34,14 @@ public class UserJDBCTemplate {
                 user.getEnabled());
         return true;
     }
-
+    @Override
     public User getUser(Integer id) {
         String SQL = "select * from users where id = ?";
         User user = jdbcTemplateObject.queryForObject(SQL,
                 new Object[]{id}, new UserMapper());
         return user;
     }
-
+    @Override
     public List<User> listUsers(String username ) {
         String SQL = "select * from users where username like ?";
         List<User> users = jdbcTemplateObject.query(SQL,
@@ -57,22 +58,22 @@ public class UserJDBCTemplate {
         }
         return false;
     }
-
+    @Override
     public List<User> listUsers() {
         String SQL = "select * from users";
         List<User> users = jdbcTemplateObject.query(SQL,new UserMapper());
         return users;
     }
-
+    @Override
     public void delete(Integer id) {
         String SQL = "delete from users where id = ?";
         jdbcTemplateObject.update(SQL, id);
         return;
     }
-
-//    public void updateFullName(User user) {
-//        String SQL = "update users set fullName = ? where id = ?";
-//        jdbcTemplateObject.update(SQL, user.getFullName(), user.getId());
-//        return;
-//    }
+    @Override
+    public void updateUser(User user) {
+        String SQL = "update users set username = ?, password = ? where id = ?";
+        jdbcTemplateObject.update(SQL, user.getUsername(), user.getPassword(),user.getId());
+        return;
+    }
 }

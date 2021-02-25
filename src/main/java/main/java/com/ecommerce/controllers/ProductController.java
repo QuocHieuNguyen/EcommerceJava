@@ -15,8 +15,13 @@ import main.java.com.ecommerce.services.ProductService;
 @RequestMapping("/products")
 public class ProductController {
 
+	
       @Autowired
 	  private ProductService productService;
+      public ProductController() {
+    	  System.out.println("In Product Page");
+		// TODO Auto-generated constructor stub
+	}
       @GetMapping("/all")  
 	  public String getAllProducts(Model model) {	 
  		model.addAttribute("products",productService.getAllProducts());

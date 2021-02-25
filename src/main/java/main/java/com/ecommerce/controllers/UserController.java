@@ -23,13 +23,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-//@RequestMapping(value ="/Admin")
+@RequestMapping(value ="/admin")
 public class UserController {
 
     private ApplicationContext context = null;
     private UserJDBCTemplate userJDBCTemplate = null;
 
     public UserController() {
+    	System.out.println("In Admin Page");
     	try {
             context = new ClassPathXmlApplicationContext("/database-ref.xml");
             userJDBCTemplate = (UserJDBCTemplate) context.getBean("userJDBCTemplate");
@@ -100,14 +101,14 @@ public class UserController {
         return "add";
     }
     
-//    @RequestMapping(value = "/doEditUser", method = RequestMethod.POST)
-//    public String doEditUser(@ModelAttribute User user, ModelMap model) {
-//        userJDBCTemplate.updateFullName(user);
-//        
-//        model.put("user", new User());
-//        model.put("userList", userJDBCTemplate.listUsers());
-//        return "home";
-//    }
+    @RequestMapping(value = "/editUser/doEditUser", method = RequestMethod.POST)
+    public String doEditUser(@ModelAttribute User user, ModelMap model) {
+    	
+    	userJDBCTemplate.updateUser(user);
+        model.put("user", new User());
+        model.put("userList", userJDBCTemplate.listUsers());
+        return "adminHome";
+    }
     @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.GET)
     public String deleteUser(@PathVariable(value = "id") int id, ModelMap model) {
         userJDBCTemplate.delete(id);

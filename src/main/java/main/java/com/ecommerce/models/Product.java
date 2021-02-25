@@ -1,5 +1,7 @@
 package main.java.com.ecommerce.models;
 
+import java.math.BigDecimal;
+
 public class Product {
 
 	private String id;
@@ -48,6 +50,12 @@ public class Product {
 	}
 	public void setSeller(String seller) {
 		this.seller = seller;
+	}
+
+
+	public BigDecimal getUnitPrice() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	 
 	
