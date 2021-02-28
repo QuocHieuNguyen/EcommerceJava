@@ -32,4 +32,15 @@ public class ProductService {
 	public Product filterProducts(Predicate<Product> strategy) {
 		return getAllProducts().stream().filter(strategy).findFirst().orElse(null);
 	}
+
+	public Product findById(long productId) {
+		for (int i = 0; i < getAllProducts().size(); i++) {
+			System.out.println("id = " + getAllProducts().get(i).getId());
+			if(getAllProducts().get(i).getId().equals(String.valueOf(productId))) {
+				System.out.println("Found Match");
+				return getAllProducts().get(i);
+			}
+		}
+		return null;
+	}
 }
