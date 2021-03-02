@@ -143,7 +143,7 @@
                                                 <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
                                                     <a class="dropdown-item" href="index.html">Home</a>
-                                                    <a class="dropdown-item" href="./products/all">Shop</a>
+                                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/products/all">Shop</a>
                                                     <a class="dropdown-item" href="product-details.html">Product Details</a>
                                                     <a class="dropdown-item" href="cart.html">Cart</a>
                                                     <a class="dropdown-item" href="checkout.html">Checkout</a>

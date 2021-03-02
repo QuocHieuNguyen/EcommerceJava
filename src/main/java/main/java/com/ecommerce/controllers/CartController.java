@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import main.java.com.ecommerce.models.Cart;
+import main.java.com.ecommerce.models.Order;
 import main.java.com.ecommerce.models.Product;
+import main.java.com.ecommerce.models.User;
+import main.java.com.ecommerce.services.OrderService;
 import main.java.com.ecommerce.services.ProductService;
 
 @Controller
@@ -35,6 +38,9 @@ public class CartController {
 //	}
 		@Autowired
 	   private ProductService productService;
+		@Autowired
+		   private OrderService orderService;
+		HashMap<Long, Cart> cartItemsMap;
 
 //		@RequestMapping
 //		public String get(HttpServletRequest request){
@@ -64,6 +70,7 @@ public class CartController {
 	        session.setAttribute("myCartItems", cartItems);
 	        session.setAttribute("myCartTotal", totalPrice(cartItems));
 	        session.setAttribute("myCartNum", cartItems.size());
+	        updateCartItemMap(cartItems);
 	        return "cart";
 	    }
 
@@ -74,6 +81,7 @@ public class CartController {
 	            cartItems = new HashMap<>();
 	        }
 	        session.setAttribute("myCartItems", cartItems);
+	        updateCartItemMap(cartItems);
 	        return "cart";
 	    }
 
@@ -89,9 +97,12 @@ public class CartController {
 	        session.setAttribute("myCartItems", cartItems);
 	        session.setAttribute("myCartTotal", totalPrice(cartItems));
 	        session.setAttribute("myCartNum", cartItems.size());
+	        updateCartItemMap(cartItems);
 	        return "cart";
 	    }
-
+	    public void updateCartItemMap(HashMap<Long, Cart> cartItems) {
+	    	cartItemsMap =new HashMap<Long, Cart>(cartItems);
+	    }
 	    public double totalPrice(HashMap<Long, Cart> cartItems) {
 	        int count = 0;
 	        for (Map.Entry<Long, Cart> list : cartItems.entrySet()) {
@@ -99,6 +110,17 @@ public class CartController {
 	        }
 	        return count;
 	    }
+		@RequestMapping(value = "/order",  method = RequestMethod.GET)
+		public String get(HttpServletRequest request, ModelMap mm){
+			mm.put("myCartItems", cartItemsMap);
+			for (Map.Entry<Long, Cart> entry : cartItemsMap.entrySet()) {
+				Long key = entry.getKey();
+				Cart value = entry.getValue();
+				orderService.add(new Order(key.toString(),new User(), value));
+			    // ...
+			}
+			return "order";
+		}
 
 	
 }

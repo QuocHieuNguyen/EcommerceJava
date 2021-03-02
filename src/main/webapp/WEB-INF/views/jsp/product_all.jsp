@@ -10,6 +10,8 @@
         <p>Price : ${product.price}  </p>
 		<p>Seller :  ${product.seller} </p>  
         </div>
+              <div class="panel-footer"> <button type="button" class="btn btn-primary btn-md"
+           onClick="location.href='${pageContext.request.contextPath}/cart/add/${product.id} ' ">Add to Cart</button></div>
         <div class="panel-footer"> <button type="button" class="btn btn-primary btn-md"
            onClick="location.href='./${product.id} ' ">Browse</button></div>
       </div>

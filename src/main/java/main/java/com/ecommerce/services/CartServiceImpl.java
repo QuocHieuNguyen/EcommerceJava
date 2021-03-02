@@ -45,6 +45,11 @@ public class CartServiceImpl implements CartService{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public Cart getCartByCartId(String cartId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 	

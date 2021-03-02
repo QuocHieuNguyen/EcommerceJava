@@ -1,16 +1,12 @@
 package main.java.com.ecommerce.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import main.java.com.ecommerce.models.User;
 
 public class UserServiceImpl implements IUserService {
 
-	@Override
-	public List<User> listUsers(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public boolean create(User user) {
@@ -40,6 +36,12 @@ public class UserServiceImpl implements IUserService {
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<User> listUsers(ArrayList<User> list) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
