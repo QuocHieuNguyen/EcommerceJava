@@ -1,10 +1,16 @@
 package main.java.com.ecommerce.controllers;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import main.java.com.ecommerce.models.ExtendedUser;
 
 @Controller
 public class LoginController {
@@ -24,6 +30,13 @@ public class LoginController {
 		}
 	  @RequestMapping("/admin")
 	  public String admin() {
+//		  Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//
+//		  ExtendedUser temp =   (ExtendedUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//	  System.out.println(temp.getUsername());
+//		  ExtendedUser ext = (ExtendedUser) temp;
+//		  
+//		  System.out.println(ext.getId());
 	    return "admin";
 	  }
 	  @RequestMapping("/user")

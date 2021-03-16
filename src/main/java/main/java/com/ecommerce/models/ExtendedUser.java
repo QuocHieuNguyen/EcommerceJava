@@ -1,7 +1,7 @@
 
 package main.java.com.ecommerce.models;
 
-public class User {
+public class ExtendedUser {
     private Integer id;
     private String username;
     private String password;

@@ -43,9 +43,10 @@
 			<th>Product Name</th>
 			<th>Quantity</th>
 			<th>Price</th>
-			<th>Amount</th>
+			<!-- <th>Amount</th> -->
 		</tr>
 		<c:forEach var="map" items="${myCartItems}">
+			<tr>
 			<div class="cart_box">
 				<div class="message">
 					<div class="list_img">
@@ -54,7 +55,8 @@
 							class="img-responsive" alt="">
 					</div>
 					<div class="list_desc">
-						<td><a href="#"><c:out value="${map.value.product.id}" /></a>
+						<td>
+						<a href="#"><c:out value="${map.value.product.id}" /></a>
 						</td>
 						<td><a href="#"><c:out value="${map.value.product.name}" /></a>
 						</td>
@@ -69,6 +71,7 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
+			</tr>
 		</c:forEach>
 		<%--        <c:forEach items="${orderInfo.details}" var="orderDetailInfo">
            <tr>

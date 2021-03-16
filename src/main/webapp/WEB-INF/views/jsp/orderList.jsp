@@ -7,10 +7,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Student Management</title>
+        <title>Order Management</title>
     </head>
     <body>
-        <h1>Students Data</h1>
+        <h1>Order Data</h1>
 <%--     <form:form action="./user.do" method="POST" modelAttribute="order">
         <table>
             <tr>
@@ -25,16 +25,15 @@
     <table border="1">
         <th>ID</th>
         <th>username</th>
-        <th>password</th>
-        <th>fullName</th>
+        <th>cartID</th>
         <c:forEach items="${orderList}" var="order" >
             <tr>
                 <td>${order.id}</td>
-<%--                 <td>${order.user.name}</td>
-                <td>${order.cart.id}</td> --%>
+                 <td>${order.user.username}</td>
+                <td>${order.cart}</td> 
                 <%-- <td>${user.fullName}</td> --%>
-<%--                 <td><a href="./editUser/${user.id}">Edit</a></td>
-                <td><a href="./deleteUser/${user.id}">Delete</a></td> --%>
+                 <td><a href="./editUser/${user.id}">Accept</a></td>
+                <td><a href="./deleteUser/${user.id}">Reject</a></td>
             </tr>
         </c:forEach>
     </table>

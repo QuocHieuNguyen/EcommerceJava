@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import main.java.com.ecommerce.models.User;
+import main.java.com.ecommerce.models.ExtendedUser;
 import main.java.com.ecommerce.userjdbctemplate.UserJDBCTemplate;
 
 import org.springframework.ui.ModelMap;
@@ -55,7 +55,7 @@ public class UserController {
 //    }
 
     @RequestMapping(value = "/user.do", method = RequestMethod.POST)
-    public String doActions(@ModelAttribute User user, BindingResult result, @RequestParam String action, ModelMap model) {
+    public String doActions(@ModelAttribute ExtendedUser user, BindingResult result, @RequestParam String action, ModelMap model) {
         String work = action.toLowerCase().toString();
         if (work.equals("search") && !user.getUsername().equals("")) {
             model.put("userList", userJDBCTemplate.listUsers(user.getUsername()));
@@ -67,7 +67,7 @@ public class UserController {
 
     @RequestMapping(value = "/adminHome", method = RequestMethod.GET)
     public String getIndex(ModelMap model) {
-        User user = new User();
+        ExtendedUser user = new ExtendedUser();
         model.put("user", user);
         model.put("userList", userJDBCTemplate.listUsers());
         return "adminHome";
@@ -75,15 +75,15 @@ public class UserController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String userAdd(ModelMap model) {
-        model.put("user", new User());
+        model.put("user", new ExtendedUser());
         model.put("actions", "addUser");
         return "add";
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute User user, ModelMap model) {
+    public String addUser(@ModelAttribute ExtendedUser user, ModelMap model) {
         if (userJDBCTemplate.create(user)) {
-            model.put("user", new User());
+            model.put("user", new ExtendedUser());
             model.put("userList", userJDBCTemplate.listUsers());
             return "adminHome";
         }
@@ -91,17 +91,17 @@ public class UserController {
     }
     @RequestMapping(value = "/editUser/{id}", method = RequestMethod.GET)
     public String editKhachHang(@PathVariable(value = "id") int id, ModelMap model) {
-        User user = userJDBCTemplate.getUser(id);
+        ExtendedUser user = userJDBCTemplate.getUser(id);
         model.put("user", user);
         model.put("actions", "doEditUser");
         return "add";
     }
     
     @RequestMapping(value = "/editUser/doEditUser", method = RequestMethod.POST)
-    public String doEditUser(@ModelAttribute User user, ModelMap model) {
+    public String doEditUser(@ModelAttribute ExtendedUser user, ModelMap model) {
     	
     	userJDBCTemplate.updateUser(user);
-        model.put("user", new User());
+        model.put("user", new ExtendedUser());
         model.put("userList", userJDBCTemplate.listUsers());
         return "adminHome";
     }
@@ -109,7 +109,7 @@ public class UserController {
     public String deleteUser(@PathVariable(value = "id") int id, ModelMap model) {
         userJDBCTemplate.delete(id);
         
-        model.put("user", new User());
+        model.put("user", new ExtendedUser());
         model.put("userList", userJDBCTemplate.listUsers());
         return "adminHome";
     }

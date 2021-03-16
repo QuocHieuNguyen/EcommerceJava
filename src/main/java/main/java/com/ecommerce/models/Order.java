@@ -2,19 +2,19 @@ package main.java.com.ecommerce.models;
 
 public class Order {
 	private String id;
-	private User user;
+	private ExtendedUser user;
 	private Cart cart;
 
-	public Order(String id, User user, Cart cart) {
+	public Order(String id, ExtendedUser user, Cart cart) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.cart = cart;
 	}
-	public User getUser() {
+	public ExtendedUser getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+	public void setUser(ExtendedUser user) {
 		this.user = user;
 	}
 	public String getId() {

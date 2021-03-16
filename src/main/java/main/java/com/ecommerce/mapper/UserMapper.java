@@ -5,13 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
-import main.java.com.ecommerce.models.User;
+import main.java.com.ecommerce.models.ExtendedUser;
 
 
-public class UserMapper implements RowMapper<User> {
+public class UserMapper implements RowMapper<ExtendedUser> {
 
-    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-        User user = new User();
+    public ExtendedUser mapRow(ResultSet rs, int rowNum) throws SQLException {
+        ExtendedUser user = new ExtendedUser();
         user.setId(rs.getInt("id"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password"));

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.java.com.ecommerce.models.Product;
@@ -13,6 +14,8 @@ import main.java.com.ecommerce.models.Product;
 @Service 
 public class ProductService {
 
+	@Autowired
+	private PromotionService promotionService;
 	public List<Product> getAllProducts() {
 		
 		List<Product> listOfProducts = new ArrayList<>();
@@ -32,7 +35,16 @@ public class ProductService {
 	public Product filterProducts(Predicate<Product> strategy) {
 		return getAllProducts().stream().filter(strategy).findFirst().orElse(null);
 	}
-
+	public Product getProcessedProductById(String id) {
+		Product product = getProductById(id);
+		for (int i = 0; i < promotionService.getPromotionList().size(); i++) {
+			if(product.equals(promotionService.getPromotionById(i).getProduct())){
+				
+				break;
+			}
+		}
+		return product;
+	}
 	public Product findById(long productId) {
 		for (int i = 0; i < getAllProducts().size(); i++) {
 			System.out.println("id = " + getAllProducts().get(i).getId());

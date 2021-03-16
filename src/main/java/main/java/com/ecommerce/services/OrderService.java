@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import main.java.com.ecommerce.models.Order;
-import main.java.com.ecommerce.models.User;
+import main.java.com.ecommerce.models.ExtendedUser;
 @Service
 public class OrderService {
 	List<Order> orderList = new ArrayList();
