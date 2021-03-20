@@ -13,15 +13,17 @@ import main.java.com.ecommerce.models.Product;
 
 @Service 
 public class ProductService {
-
+	List<Product> listOfProducts = new ArrayList<>();
 	@Autowired
 	private PromotionService promotionService;
 	public List<Product> getAllProducts() {
 		
-		List<Product> listOfProducts = new ArrayList<>();
-		listOfProducts.add(new Product("123", "IPHONE X", "This is Awesome Iphone ", 400.4, "Apple Inc"));
-		listOfProducts.add(new Product("124", "Samsung Y", "This is Awesome Samsung ", 300.4, "Samsung Inc"));
-		listOfProducts.add(new Product("125", "LG Z", "This is Awesome LG ", 200.4, "LG Inc"));
+		if(listOfProducts.size() == 0) {
+			listOfProducts.add(new Product("123", "IPHONE X", "This is Awesome Iphone ", 400.4, "Apple Inc"));
+			listOfProducts.add(new Product("124", "Samsung Y", "This is Awesome Samsung ", 300.4, "Samsung Inc"));
+			listOfProducts.add(new Product("125", "LG Z", "This is Awesome LG ", 200.4, "LG Inc"));
+		}
+
 
 		return listOfProducts;
 	}
@@ -54,5 +56,15 @@ public class ProductService {
 			}
 		}
 		return null;
+	}
+	public void addProduct(Product product) {
+		listOfProducts.add(product);
+	}
+	public String getFileExtension(String fileName){
+		
+		if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
+	        return fileName.substring(fileName.lastIndexOf(".")+1);
+		else
+			return "";
 	}
 }

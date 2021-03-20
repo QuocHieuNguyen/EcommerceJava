@@ -100,7 +100,10 @@ public class CartController {
 		session.setAttribute("myCartTotal", totalPrice(cartItems));
 		session.setAttribute("myCartNum", cartItems.size());
 		updateCartItemMap(cartItems);
-		return "cart";
+		if(cartItems.size() > 0) {
+			return "cart";
+		}
+		return "home";
 	}
 
 	public void updateCartItemMap(HashMap<Long, Cart> cartItems) {

@@ -134,7 +134,7 @@
 			</div>
 			<div class="login_buttons">
 				<div class="check_button">
-					<a href="checkout.html">Check out</a>
+					<a href="${pageContext.request.contextPath}/cart/order">Check out</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
