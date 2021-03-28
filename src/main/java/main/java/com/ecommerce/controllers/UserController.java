@@ -58,8 +58,10 @@ public class UserController {
     public String doActions(@ModelAttribute ExtendedUser user, BindingResult result, @RequestParam String action, ModelMap model) {
         String work = action.toLowerCase().toString();
         if (work.equals("search") && !user.getUsername().equals("")) {
+        	model.put("user", new ExtendedUser());
             model.put("userList", userJDBCTemplate.listUsers(user.getUsername()));
         } else {
+        	model.put("user", new ExtendedUser());
             model.put("userList", userJDBCTemplate.listUsers());
         }
         return "adminHome";

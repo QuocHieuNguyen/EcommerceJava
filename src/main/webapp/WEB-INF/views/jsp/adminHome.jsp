@@ -7,14 +7,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Student Management</title>
+        <title>Management</title>
     </head>
     <body>
-        <h1>Students Data</h1>
+        <h1>Data</h1>
     <form:form action="./user.do" method="POST" modelAttribute="user">
         <table>
             <tr>
-                <td>Student ID</td>
+                <td>ID</td>
                 <td><form:input path="username" /></td>
                 <td><input type="submit" name="action" value="Search" /></td>
             <tr>
