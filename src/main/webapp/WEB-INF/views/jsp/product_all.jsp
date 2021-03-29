@@ -1,4 +1,5 @@
 
+<%@page import="main.java.com.ecommerce.models.Product"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -11,7 +12,18 @@
       <div class="panel panel-primary">
         <div class="panel-heading"> ${product.name} </div>
         <div class="panel-body">
-        <p>Price : ${product.price}  </p>
+        
+<c:choose>
+    <c:when test="${product.processedPrice != 0}">
+    	<p style ="text-decoration: line-through;">Price : ${product.price}  </p>
+        <p style="font-family:'Myriad Pro','sans-serif'; font-size:10.0pt; color:#ff0000; ">Price : ${product.processedPrice}  </p>
+        <br />
+    </c:when>    
+    <c:otherwise>
+ 		<p>Price : ${product.price}  </p>
+        <br />
+    </c:otherwise>
+</c:choose>
 		<p>Seller :  ${product.seller} </p>  
         </div>
               <div class="panel-footer"> <button type="button" class="btn btn-primary btn-md"

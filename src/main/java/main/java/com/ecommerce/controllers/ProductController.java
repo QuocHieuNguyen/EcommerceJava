@@ -36,7 +36,7 @@ public class ProductController {
 	}
       @GetMapping("/all")  
 	  public String getAllProducts(Model model) {	 
- 		model.addAttribute("products",productService.getAllProducts());
+ 		model.addAttribute("products",productService.getProcessedProduct());
  		
 		  return "product_all";
 	  }

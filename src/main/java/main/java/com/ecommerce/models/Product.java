@@ -10,6 +10,8 @@ public class Product {
 	private String name;
 	private String description;
 	private double price;
+	private double processedPrice;
+	private boolean isProccessed;
 	private String seller;
 	private MultipartFile productImage;
 	private String imageSource;
@@ -84,6 +86,22 @@ public class Product {
 
 	public void setImageSource(String imageSource) {
 		this.imageSource = imageSource;
+	}
+
+
+	public double getProcessedPrice() {
+		return processedPrice;
+	}
+
+
+	public void setProcessedPrice(double processedPrice) {
+		this.processedPrice = processedPrice;
+		isProccessed = true;
+	}
+
+
+	public boolean isProccessed() {
+		return isProccessed;
 	}
 	 
 	

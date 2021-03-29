@@ -37,15 +37,17 @@ public class ProductService {
 	public Product filterProducts(Predicate<Product> strategy) {
 		return getAllProducts().stream().filter(strategy).findFirst().orElse(null);
 	}
-	public Product getProcessedProductById(String id) {
-		Product product = getProductById(id);
-		for (int i = 0; i < promotionService.getPromotionList().size(); i++) {
-			if(product.equals(promotionService.getPromotionById(i).getProduct())){
-				
-				break;
+	public List<Product> getProcessedProduct() {
+		List<Product> pros = new ArrayList<Product>(getAllProducts());
+		for (int i = 0; i < listOfProducts.size(); i++) {
+			for (int j = 0; j < promotionService.getPromotionList().size(); j++) {
+				if(listOfProducts.get(i).getId().equals(promotionService.getPromotionList().get(j).getProductId())){
+					listOfProducts.get(i).setProcessedPrice(getAllProducts().get(i).getPrice() * promotionService.getPromotionList().get(j).getPercentage());
+					
+				}
 			}
 		}
-		return product;
+		return listOfProducts;
 	}
 	public Product findById(long productId) {
 		for (int i = 0; i < getAllProducts().size(); i++) {
@@ -56,6 +58,28 @@ public class ProductService {
 			}
 		}
 		return null;
+	}
+	public List<Product> getProductsSortedByPrice(boolean decs){
+		List<Product> pros = new ArrayList<Product>(getAllProducts());
+		for (int i = 0; i < pros.size(); i++) {
+			for (int j = i+1; j < pros.size(); j++) {
+				if(!decs) {
+					if(pros.get(i).getPrice() > pros.get(j).getPrice()) {
+						double temp = pros.get(i).getPrice();
+						pros.get(i).setPrice(pros.get(j).getPrice());
+						pros.get(j).setPrice(temp);
+					}
+				}else {
+					if(pros.get(i).getPrice() < pros.get(j).getPrice()) {
+						double temp = pros.get(i).getPrice();
+						pros.get(i).setPrice(pros.get(j).getPrice());
+						pros.get(j).setPrice(temp);
+					}
+				}
+
+			}
+		}
+		return pros;
 	}
 	public void addProduct(Product product) {
 		listOfProducts.add(product);

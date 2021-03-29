@@ -16,6 +16,12 @@ public class PromotionService {
 	}
 
 	public List<Promotion> getPromotionList() {
+		if(promotionList.size() == 0) {
+			Promotion p = new Promotion();
+			p.setPercentage(DEFAULT_PERCENTAGE);
+			p.setProductId("123");
+			add(p);
+		}
 		return promotionList;
 	}
 

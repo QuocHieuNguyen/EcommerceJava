@@ -4,6 +4,7 @@ public class Order {
 	private String id;
 	private ExtendedUser user;
 	private Cart cart;
+	private String status;
 
 	public Order(String id, ExtendedUser user, Cart cart) {
 		super();
@@ -25,5 +26,11 @@ public class Order {
 	}
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
