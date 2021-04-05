@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import main.java.com.ecommerce.dao.JdbcProductDAO;
 import main.java.com.ecommerce.models.Product;
 
 
@@ -15,10 +16,13 @@ import main.java.com.ecommerce.models.Product;
 public class ProductService {
 	List<Product> listOfProducts = new ArrayList<>();
 	@Autowired
+	private JdbcProductDAO jdbcProductDAO;
+	@Autowired
 	private PromotionService promotionService;
 	public List<Product> getAllProducts() {
 		
 		if(listOfProducts.size() == 0) {
+			listOfProducts = jdbcProductDAO.listProducts();
 			listOfProducts.add(new Product("123", "IPHONE X", "This is Awesome Iphone ", 400.4, "Apple Inc"));
 			listOfProducts.add(new Product("124", "Samsung Y", "This is Awesome Samsung ", 300.4, "Samsung Inc"));
 			listOfProducts.add(new Product("125", "LG Z", "This is Awesome LG ", 200.4, "LG Inc"));

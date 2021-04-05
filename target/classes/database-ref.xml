@@ -27,5 +27,8 @@
    <bean id="userJDBCTemplate"   class="main.java.com.ecommerce.userjdbctemplate.UserJDBCTemplate">
       <property name="dataSource"  ref="dataSource" />    
    </bean>
+          <bean id="jdbcProductDAO" class="main.java.com.ecommerce.dao.JdbcProductDAO">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 
 </beans>
