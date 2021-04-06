@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import main.java.com.ecommerce.mapper.ProductMapper;
+import main.java.com.ecommerce.models.ExtendedUser;
 import main.java.com.ecommerce.models.Product;
 
 @Repository
@@ -22,7 +23,7 @@ public class JdbcProductDAO extends JdbcDaoSupport{
 	  JdbcProductDAO(DataSource dataSource) {
 	    setDataSource(dataSource);
 	  }
-//	public JdbcProductDAO() {
+	public JdbcProductDAO() {
 //    	try {
 //            context = new ClassPathXmlApplicationContext("/database-ref.xml");
 //            jdbcProductDAO = (JdbcProductDAO) context.getBean("jdbcProductDAO");
@@ -30,7 +31,7 @@ public class JdbcProductDAO extends JdbcDaoSupport{
 //    		e.printStackTrace();
 //			// TODO: handle exception
 //		}
-//	}
+	}
 	public static JdbcProductDAO instance() {
 		return jdbcProductDAO;
 	}
@@ -44,8 +45,18 @@ public class JdbcProductDAO extends JdbcDaoSupport{
         String sql = "INSERT INTO product " +
             "(name, price, description) VALUES (?, ?, ?)";
                  
-        getJdbcTemplate().update(sql, new Object[] { product.getId(),
-        		product.getName(),product.getDescription()  
+        getJdbcTemplate().update(sql, new Object[] { product.getName(),
+        		product.getPrice(),product.getDescription()  
         });
+    }
+    public void delete(Integer id) {
+        String SQL = "delete from product where id = ?";
+        getJdbcTemplate().update(SQL, id);
+        return;
+    }
+    public void update(Product product) {
+        String SQL = "update product set name = ?, price = ?, description = ? where id = ?";
+        getJdbcTemplate().update(SQL, product.getName(), product.getPrice(), product.getDescription(),product.getId());
+        return;
     }
 }

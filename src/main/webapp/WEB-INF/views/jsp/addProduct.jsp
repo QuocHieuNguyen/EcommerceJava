@@ -32,7 +32,8 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form modelAttribute="newProduct" action="add?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data" class="form-horizontal">
+		<%-- <form:form modelAttribute="newProduct" action="add?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data" class="form-horizontal"> --%>
+			<form:form method="POST" modelAttribute="newProduct" action="./add" class="form-horizontal">
 			<fieldset>
 				<legend>Add new product</legend>
 				<div class="form-group">
@@ -40,7 +41,7 @@
 					New Product ID
 					</label>
 					<div class="col-lg-10">
-						<form:input id="id" path="id" type="text" class="form:input-large" />
+					<%-- 	<form:input id="id" type="text" class="form:input-large" /> --%>
 					</div>
 				</div>
 				<div class="form-group">
@@ -48,15 +49,15 @@
 					Product Name
 					</label>
 					<div class="col-lg-10">
-						<form:input id="name" type="text" path="name" class="form:input-large" />
+						<form:input id="name" type="text" path="name" value="${newProduct.getName()}" class="form:input-large" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="unitPrice">
+					<label class="control-label col-lg-2 col-lg-2" for="price">
 					Unit Price
 					</label>
 					<div class="col-lg-10">
-						<form:input type="text" id="unitPrice" path="unitPrice" class="form:input-large" />
+						<form:input type="text" id="unitPrice" path="price" value="${newProduct.getPrice()}" class="form:input-large" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -105,7 +106,7 @@
 					Product Image File
 					</label>
 					<div class="col-lg-10">
-						<form:input type="file" class="form:input-large" id="productImage" path="productImage" name ="productImage"  />
+					<%-- 	<form:input type="file" class="form:input-large" id="productImage" path="productImage" name ="productImage"  /> --%>
 					</div>
 				</div>
 				<div class="form-group">

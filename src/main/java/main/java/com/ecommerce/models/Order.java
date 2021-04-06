@@ -12,11 +12,23 @@ public class Order {
 		this.user = user;
 		this.cart = cart;
 	}
+	public Order() {
+		// TODO Auto-generated constructor stub
+	}
 	public ExtendedUser getUser() {
 		return user;
 	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
 	public void setUser(ExtendedUser user) {
 		this.user = user;
+	}
+	public void setUser(int s) {
+		ExtendedUser e = new ExtendedUser();
+		e.setId(s);
+		this.user = e;
 	}
 	public String getId() {
 		return id;
@@ -26,6 +38,11 @@ public class Order {
 	}
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+	public void setCart(String cart) {
+		Cart c = new Cart();
+		c.setId(cart);
+		this.cart = c;
 	}
 	public String getStatus() {
 		return status;

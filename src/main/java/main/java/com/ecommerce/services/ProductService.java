@@ -86,7 +86,13 @@ public class ProductService {
 		return pros;
 	}
 	public void addProduct(Product product) {
-		listOfProducts.add(product);
+		jdbcProductDAO.insert(product);
+	}
+	public void deleteProduct(Integer id) {
+		jdbcProductDAO.delete(id);
+	}
+	public void updateProduct(Product product) {
+		jdbcProductDAO.update(product);
 	}
 	public String getFileExtension(String fileName){
 		

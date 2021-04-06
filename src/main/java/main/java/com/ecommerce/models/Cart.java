@@ -90,6 +90,7 @@ public class Cart {
 //			return false;
 //		return true;
 //	}
+		private String id;
 	   private Product product;
 	    private int quantity;
 
@@ -108,7 +109,11 @@ public class Cart {
 	    public void setProduct(Product product) {
 	        this.product = product;
 	    }
-
+	    public void setProduct(String id) {
+	    	Product p = new Product();
+	    	p.setId(id);
+	    	 this.product = p;
+	    }
 	    public int getQuantity() {
 	        return quantity;
 	    }
@@ -116,4 +121,12 @@ public class Cart {
 	    public void setQuantity(int quantity) {
 	        this.quantity = quantity;
 	    }
+
+		public String getId() {
+			return id;
+		}
+
+		public void setId(String id) {
+			this.id = id;
+		}
 }

@@ -19,6 +19,8 @@ import main.java.com.ecommerce.models.Cart;
 import main.java.com.ecommerce.models.Order;
 import main.java.com.ecommerce.models.Product;
 import main.java.com.ecommerce.models.ExtendedUser;
+import main.java.com.ecommerce.services.CartService;
+import main.java.com.ecommerce.services.CartServiceImpl;
 import main.java.com.ecommerce.services.OrderService;
 import main.java.com.ecommerce.services.ProductService;
 
@@ -42,6 +44,8 @@ public class CartController {
 	private ProductService productService;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private CartServiceImpl cartService;
 	HashMap<Long, Cart> cartItemsMap;
 
 //		@RequestMapping
@@ -67,6 +71,8 @@ public class CartController {
 				item.setProduct(product);
 				item.setQuantity(1);
 				cartItems.put(productId, item);
+				cartService.create(item);
+				item.setId(cartService.carts().get(cartService.carts().size() -1).toString());
 			}
 		}
 		session.setAttribute("myCartItems", cartItems);
@@ -121,14 +127,20 @@ public class CartController {
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
 	public String get(HttpServletRequest request, ModelMap mm) {
 		mm.put("myCartItems", cartItemsMap);
+		int len =  cartItemsMap.entrySet().size();
 		for (Map.Entry<Long, Cart> entry : cartItemsMap.entrySet()) {
 			Long key = entry.getKey();
 			Cart value = entry.getValue();
+			value.setId(cartService.carts().get(cartService.carts().size() - len).getId());
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			ExtendedUser e = new ExtendedUser();
 			e.setUsername(authentication.getName());
-			
-			orderService.add(new Order(key.toString(), e, value));
+			System.out.println(value.getId());
+			Order order = new Order();
+			order.setUser(e);
+			e.setId(5);
+			order.setCart(value);
+			orderService.add(order);
 			// ...
 		}
 		return "order";
