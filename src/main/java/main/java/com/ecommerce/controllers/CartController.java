@@ -137,6 +137,27 @@ public class CartController {
 			e.setUsername(authentication.getName());
 			System.out.println(value.getId());
 			Order order = new Order();
+//			order.setUser(e);
+//			e.setId(5);
+//			order.setCart(value);
+//			orderService.add(order);
+			// ...
+		}
+		return "order";
+	}
+	@RequestMapping(value = "/order", method = RequestMethod.POST)
+	public String post(HttpServletRequest request, ModelMap mm) {
+		mm.put("myCartItems", cartItemsMap);
+		int len =  cartItemsMap.entrySet().size();
+		for (Map.Entry<Long, Cart> entry : cartItemsMap.entrySet()) {
+			Long key = entry.getKey();
+			Cart value = entry.getValue();
+			value.setId(cartService.carts().get(cartService.carts().size() - len).getId());
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			ExtendedUser e = new ExtendedUser();
+			e.setUsername(authentication.getName());
+			System.out.println(value.getId());
+			Order order = new Order();
 			order.setUser(e);
 			e.setId(5);
 			order.setCart(value);
