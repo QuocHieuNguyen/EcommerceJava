@@ -12,7 +12,7 @@
         content="Mặc mới mỗi ngày với thời trang CANIFA. Hơn 100+ mẫu quần áo &amp; phụ kiện nam, nữ, trẻ em và bé sơ sinh &quot;lên kệ&quot; hàng ngày. MUA SẮM ONLINE &amp; TẠI CỬA HÀNG!" />
     <meta name="keywords" content="" />
     <meta name="robots" content="INDEX,FOLLOW" />
-    <link rel="icon" href="https://canifa.com/skin/frontend/canifa/canifa-2019/favicon.ico" type="image/x-icon" />
+<!--     <link rel="icon" href="https://canifa.com/skin/frontend/canifa/canifa-2019/favicon.ico" type="image/x-icon" /> -->
 <!--     <link rel="shortcut icon" href="https://canifa.com/skin/frontend/canifa/canifa-2019/favicon.ico"
         type="image/x-icon" /> -->
     <!--[if lt IE 7]>
