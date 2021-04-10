@@ -13,8 +13,8 @@
     <meta name="keywords" content="" />
     <meta name="robots" content="INDEX,FOLLOW" />
     <link rel="icon" href="https://canifa.com/skin/frontend/canifa/canifa-2019/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="https://canifa.com/skin/frontend/canifa/canifa-2019/favicon.ico"
-        type="image/x-icon" />
+<!--     <link rel="shortcut icon" href="https://canifa.com/skin/frontend/canifa/canifa-2019/favicon.ico"
+        type="image/x-icon" /> -->
     <!--[if lt IE 7]>
 <script type="text/javascript">
 //<![CDATA[
