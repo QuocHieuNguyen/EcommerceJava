@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import main.java.com.ecommerce.models.ExtendedUser;
 import main.java.com.ecommerce.models.Product;
 
 import main.java.com.ecommerce.services.ProductService;
@@ -46,6 +47,13 @@ public class ProductController {
     	 
     	  model.addAttribute("product",productService.getProductById(productId));
     	  return "product";
+      }
+      @RequestMapping(value = "/admin/productList", method = RequestMethod.GET)
+      public String getIndex(ModelMap model) {
+          Product product = new Product();
+          model.put("product", product);
+          model.put("productList", productService.getAllProducts());
+          return "adminProductList";
       }
   	@RequestMapping(value = "/add", method = RequestMethod.GET)
   	public String getAddNewProductForm(Model model){

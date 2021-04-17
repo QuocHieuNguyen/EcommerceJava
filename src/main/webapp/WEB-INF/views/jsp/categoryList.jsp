@@ -242,11 +242,10 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${orderList}" var="order">
+											<c:forEach items="${categoryList}" var="category">
 												<tr>
-													<td>${order.id}</td>
-													<td>${order.user.username}</td>
-													<td>${order.cart.id}</td> 
+													<td>${category.id}</td>
+													<td>${category.categoryName}</td>
 													<td><a href="./editProduct/${promotion.id}">Edit</a></td>
 													<td><a href="./deleteProduct/${promotion.id}">Delete</a></td>
 												</tr>

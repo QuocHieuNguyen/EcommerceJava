@@ -94,11 +94,23 @@
 
 				<li><a href="chart.html"> <i class="fas fa-chart-bar"></i>Charts
 				</a></li>
-				<li class="active"><a href="ManageUser.html"> <i
+				<li class="active"><a href=""> <i
 						class="fas fa-table"></i>MANAGE USER
 				</a></li>
-				<li class="active"><a href="ManageProduct.html"> <i
+				<li class="active"><a href="${pageContext.request.contextPath}/admin/adminHome"> <i
+						class="fas fa-table"></i>MANAGE USER
+				</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/products/admin/productList"> <i
 						class="fas fa-table"></i>MANAGE PRODUCTS
+				</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/adminOrder/all"> <i
+						class="fas fa-table"></i>MANAGE ORDERS
+				</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/category/admin/all"> <i
+						class="fas fa-table"></i>MANAGE CATEGORYS
+				</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/promotion/admin/promotionList"> <i
+						class="fas fa-table"></i>MANAGE PROMOTIONS
 				</a></li>
 
 

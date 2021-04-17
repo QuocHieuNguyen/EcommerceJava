@@ -3,19 +3,24 @@ package main.java.com.ecommerce.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import main.java.com.ecommerce.dao.JdbcPromotionDAO;
 import main.java.com.ecommerce.models.Product;
 import main.java.com.ecommerce.models.Promotion;
 @Service
 public class PromotionService {
+	@Autowired
+	private JdbcPromotionDAO jdbcPromotionDAO;
 	List<Promotion> promotionList = new ArrayList();
 	final float DEFAULT_PERCENTAGE = 30f;
 	public void add(Promotion promotion) {
-		promotionList.add(promotion);
+		jdbcPromotionDAO.insert(promotion);
 	}
 
 	public List<Promotion> getPromotionList() {
+		promotionList = new ArrayList(jdbcPromotionDAO.listPromotions());
 		if(promotionList.size() == 0) {
 			Promotion p = new Promotion();
 			p.setPercentage(DEFAULT_PERCENTAGE);

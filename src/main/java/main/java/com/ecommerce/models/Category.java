@@ -3,16 +3,15 @@ package main.java.com.ecommerce.models;
 import java.util.List;
 
 public class Category {
-    private long categoryId;
+    private int categoryId;
     private String categoryName;
-    private String categoryUrl;
     private boolean categoryStatus;
 
-    public long getCategoryId() {
+    public int getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(long categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -22,14 +21,6 @@ public class Category {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
-	}
-
-	public String getCategoryUrl() {
-		return categoryUrl;
-	}
-
-	public void setCategoryUrl(String categoryUrl) {
-		this.categoryUrl = categoryUrl;
 	}
 
 	public boolean isCategoryStatus() {
