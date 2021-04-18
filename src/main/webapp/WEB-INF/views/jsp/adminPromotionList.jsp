@@ -180,7 +180,7 @@
 										</button>
 									</div>
 									<div class="table-data__tool-right">
-										<a href="${pageContext.request.contextPath}/products/add"
+										<a href="${pageContext.request.contextPath}/promotion/admin/add"
 											class="au-btn au-btn-icon au-btn--green au-btn--small">add
 											New</a>
 										<!-- <button class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -193,9 +193,8 @@
 										<thead>
 											<tr>
 												<th>ID</th>
-												<th>name</th>
-												<th>description</th>
-												<th>price</th>
+												<th>percentage</th>
+												<th>productID</th>
 												<th>edit</th>
 												<th>delete</th>
 											</tr>

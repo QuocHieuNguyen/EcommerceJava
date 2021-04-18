@@ -25,10 +25,9 @@ public class JdbcPromotionDAO extends JdbcDaoSupport{
 	        return promotions;
 	    }
 	    public void insert(Promotion promotion){
-	        
+	    	
 	        String sql = "INSERT INTO promotion " +
-	            "(percentage, productID) VALUES (?, ?)";
-	                 
+	            "(productID, percentage) VALUES (?, ?)";
 	        getJdbcTemplate().update(sql, new Object[] { 
 	        		promotion.getProductId(),promotion.getPercentage()
 	        });
