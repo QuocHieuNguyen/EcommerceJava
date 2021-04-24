@@ -105,7 +105,7 @@ public class UserController {
     	userJDBCTemplate.updateUser(user);
         model.put("user", new ExtendedUser());
         model.put("userList", userJDBCTemplate.listUsers());
-        return "adminHome";
+        return "redirect:/admin/adminHome";
     }
     @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.GET)
     public String deleteUser(@PathVariable(value = "id") int id, ModelMap model) {
@@ -113,6 +113,6 @@ public class UserController {
         
         model.put("user", new ExtendedUser());
         model.put("userList", userJDBCTemplate.listUsers());
-        return "adminHome";
+        return "redirect:/admin/adminHome";
     }
 }

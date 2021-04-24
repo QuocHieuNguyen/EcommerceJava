@@ -93,10 +93,7 @@
 			<ul class="list-unstyled navbar__list">
 
 				<li><a href="chart.html"> <i class="fas fa-chart-bar"></i>Charts
-				</a></li>
-				<li class="active"><a href=""> <i
-						class="fas fa-table"></i>MANAGE USER
-				</a></li>
+
 				<li class="active"><a href="${pageContext.request.contextPath}/admin/adminHome"> <i
 						class="fas fa-table"></i>MANAGE USER
 				</a></li>

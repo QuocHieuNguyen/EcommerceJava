@@ -109,6 +109,8 @@
 				<li class="active"><a href="${pageContext.request.contextPath}/promotion/admin/promotionList"> <i
 						class="fas fa-table"></i>MANAGE PROMOTIONS
 				</a></li>
+								</a>
+
 
 
 			</ul>

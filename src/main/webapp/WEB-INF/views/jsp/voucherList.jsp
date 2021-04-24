@@ -57,7 +57,7 @@
 <meta name="keywords" content="au theme template">
 
 <!-- Title Page-->
-<title>MANAGE PRODUCT</title>
+<title>MANAGE VOUCHER</title>
 
 <!-- Fontfaces CSS-->
  <link href="${pageContext.request.contextPath}/resources/css/font-face.css" rel="stylesheet" media="all"> 
@@ -235,19 +235,20 @@
 											<tr>
 												<th>ID</th>
 												<th>name</th>
-												<th>cartID</th>
+												<th>description</th>
+												<th>price</th>
 												<th>edit</th>
 												<th>delete</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${orderList}" var="order">
+											<c:forEach items="${voucherList}" var="voucher">
 												<tr>
-													<td>${order.id}</td>
-													<td>${order.user.username}</td>
-													<td>${order.cart.id}</td> 
-													<td><a href="./editProduct/${promotion.id}">Edit</a></td>
-													<td><a href="./deleteProduct/${promotion.id}">Delete</a></td>
+													<td>${voucher.voucherId}</td>
+													<td>${voucher.voucherCode}</td>
+													<td>${voucher.discountPercentage}</td>
+													<td><a href="./editProduct/${voucher.id}">Edit</a></td>
+													<td><a href="./deleteProduct/${voucher.id}">Delete</a></td>
 												</tr>
 											</c:forEach>
 										</tbody>

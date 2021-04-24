@@ -69,7 +69,9 @@ public class UserJDBCTemplate implements UserDao {
     }
     @Override
     public void delete(Integer id) {
-        String SQL = "delete from users where id = ?";
+    	String SQL = "delete from users_roles where users_roles.user = ?";
+    	jdbcTemplateObject.update(SQL, id);
+        SQL = "delete from users where id = ?";
         jdbcTemplateObject.update(SQL, id);
         return;
     }

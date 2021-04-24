@@ -60,17 +60,23 @@
 <title>MANAGE PRODUCT</title>
 
 <!-- Fontfaces CSS-->
- <link href="${pageContext.request.contextPath}/resources/css/font-face.css" rel="stylesheet" media="all"> 
- <link href="${pageContext.request.contextPath}/resources/vendor/font-awesome-4.7/css/font-awesome.min.css"
-	rel="stylesheet" media="all"> 
- <link href="${pageContext.request.contextPath}/resources/vendor/font-awesome-5/css/fontawesome-all.min.css"
-	rel="stylesheet" media="all"> 
- <link href="${pageContext.request.contextPath}/resources/vendor/mdi-font/css/material-design-iconic-font.min.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-face.css"
+	rel="stylesheet" media="all">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/font-awesome-4.7/css/font-awesome.min.css"
+	rel="stylesheet" media="all">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/font-awesome-5/css/fontawesome-all.min.css"
+	rel="stylesheet" media="all">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/mdi-font/css/material-design-iconic-font.min.css"
 	rel="stylesheet" media="all">
 
 <!-- Bootstrap CSS-->
- <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet"
-	media="all"> 
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/bootstrap-4.1/bootstrap.min.css"
+	rel="stylesheet" media="all">
 
 <!-- Vendor CSS-->
 <%-- <link href="${pageContext.request.contextPath}/resources/vendor/animsition/animsition.min.css" rel="stylesheet"
@@ -78,16 +84,25 @@
 <link
 	href="${pageContext.request.contextPath}/resources/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
 	rel="stylesheet" media="all">
-<link href="${pageContext.request.contextPath}/resources/vendor/wow/animate.css" rel="stylesheet" media="all">
-<link href="${pageContext.request.contextPath}/resources/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet"
-	media="all">
-<link href="${pageContext.request.contextPath}/resources/vendor/slick/slick.css" rel="stylesheet" media="all">
-<link href="${pageContext.request.contextPath}/resources/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-<link href="${pageContext.request.contextPath}/resources/vendor/perfect-scrollbar/perfect-scrollbar.css"
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/wow/animate.css"
+	rel="stylesheet" media="all">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/css-hamburgers/hamburgers.min.css"
+	rel="stylesheet" media="all">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/slick/slick.css"
+	rel="stylesheet" media="all">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/select2/select2.min.css"
+	rel="stylesheet" media="all">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/perfect-scrollbar/perfect-scrollbar.css"
 	rel="stylesheet" media="all">
 
 <!-- Main CSS-->
-<link href="${pageContext.request.contextPath}/resources/css/theme.css" rel="stylesheet" media="all">
+<link href="${pageContext.request.contextPath}/resources/css/theme.css"
+	rel="stylesheet" media="all">
 </head>
 <%-- <%@ include file="header.jsp"%> --%>
 <%--     <body>
@@ -126,7 +141,7 @@
 		<!-- MENU SIDEBAR-->
 		<aside class="menu-sidebar d-none d-lg-block">
 		<div class="logo">
-<!-- 			<a href="#"> <img src="images/icon/logo.png" alt="Cool Admin" /> -->
+			<!-- 			<a href="#"> <img src="images/icon/logo.png" alt="Cool Admin" /> -->
 			</a>
 		</div>
 		<div class="menu-sidebar__content js-scrollbar1">
@@ -135,21 +150,29 @@
 
 				<li><a href="chart.html"> <i class="fas fa-chart-bar"></i>Charts
 				</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/admin/adminHome"> <i
+				<li class="active"><a
+					href="${pageContext.request.contextPath}/admin/adminHome"> <i
 						class="fas fa-table"></i>MANAGE USER
 				</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/products/admin/productList"> <i
-						class="fas fa-table"></i>MANAGE PRODUCTS
+				<li class="active"><a
+					href="${pageContext.request.contextPath}/products/admin/productList">
+						<i class="fas fa-table"></i>MANAGE PRODUCTS
 				</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/adminOrder/all"> <i
+				<li class="active"><a
+					href="${pageContext.request.contextPath}/adminOrder/all"> <i
 						class="fas fa-table"></i>MANAGE ORDERS
 				</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/category/admin/all"> <i
+				<li class="active"><a
+					href="${pageContext.request.contextPath}/category/admin/all"> <i
 						class="fas fa-table"></i>MANAGE CATEGORYS
 				</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/promotion/admin/promotionList"> <i
-						class="fas fa-table"></i>MANAGE PROMOTIONS
+				<li class="active"><a
+					href="${pageContext.request.contextPath}/promotion/admin/promotionList">
+						<i class="fas fa-table"></i>MANAGE PROMOTIONS
 				</a></li>
+				</a>
+				</li>
+
 
 
 			</ul>
@@ -185,7 +208,7 @@
 							</div>
 						</div>
 						<div class="row">
-<%-- 							<div class="col-md-12">
+							<%-- 							<div class="col-md-12">
 								<form:form action="./user.do" method="POST"
 									modelAttribute="product">
 									<table>
@@ -196,78 +219,78 @@
 										<tr>
 									</table>
 								</form:form> --%>
-								<!-- DATA TABLE -->
-								<h3 class="title-5 m-b-35">data table</h3>
-								<div class="table-data__tool">
-									<div class="table-data__tool-left">
-										<div class="rs-select2--light rs-select2--md">
-											<select class="js-select2" name="property">
-												<option selected="selected">All Properties</option>
-												<option value="">Option 1</option>
-												<option value="">Option 2</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-										<div class="rs-select2--light rs-select2--sm">
-											<select class="js-select2" name="time">
-												<option selected="selected">Today</option>
-												<option value="">3 Days</option>
-												<option value="">1 Week</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-										<button class="au-btn-filter">
-											<i class="zmdi zmdi-filter-list"></i>filters
-										</button>
+							<!-- DATA TABLE -->
+							<h3 class="title-5 m-b-35">data table</h3>
+							<div class="table-data__tool">
+								<div class="table-data__tool-left">
+									<div class="rs-select2--light rs-select2--md">
+										<select class="js-select2" name="property">
+											<option selected="selected">All Properties</option>
+											<option value="">Option 1</option>
+											<option value="">Option 2</option>
+										</select>
+										<div class="dropDownSelect2"></div>
 									</div>
-									<div class="table-data__tool-right">
-										<a href="${pageContext.request.contextPath}/products/add"
-											class="au-btn au-btn-icon au-btn--green au-btn--small">add
-											New</a>
-										<!-- <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+									<div class="rs-select2--light rs-select2--sm">
+										<select class="js-select2" name="time">
+											<option selected="selected">Today</option>
+											<option value="">3 Days</option>
+											<option value="">1 Week</option>
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
+									<button class="au-btn-filter">
+										<i class="zmdi zmdi-filter-list"></i>filters
+									</button>
+								</div>
+								<div class="table-data__tool-right">
+									<a href="${pageContext.request.contextPath}/products/add"
+										class="au-btn au-btn-icon au-btn--green au-btn--small">add
+										New</a>
+									<!-- <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                                             <i class="zmdi zmdi-plus"></i>add item</button> -->
-									</div>
 								</div>
-
-								<div class="table-responsive m-b-40">
-									<table class="table table-borderless table-data3">
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>name</th>
-												<th>description</th>
-												<th>price</th>
-												<th>edit</th>
-												<th>delete</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${categoryList}" var="category">
-												<tr>
-													<td>${category.id}</td>
-													<td>${category.categoryName}</td>
-													<td><a href="./editProduct/${promotion.id}">Edit</a></td>
-													<td><a href="./deleteProduct/${promotion.id}">Delete</a></td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
-								<!-- END DATA TABLE-->
-
 							</div>
+
+							<div class="table-responsive m-b-40">
+								<table class="table table-borderless table-data3">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>name</th>
+											
+											
+											<th>edit</th>
+											<th>delete</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${categoryList}" var="category">
+											<tr>
+												<td>${category.categoryId}</td>
+												<td>${category.categoryName}</td>
+												<td><a href="./editProduct/${promotion.id}">Edit</a></td>
+												<td><a href="./deleteProduct/${promotion.id}">Delete</a></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+							<!-- END DATA TABLE-->
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 	</div>
 
 	<!-- Jquery JS-->
-<!-- 	<script src="vendor/jquery-3.2.1.min.js"></script> -->
+	<!-- 	<script src="vendor/jquery-3.2.1.min.js"></script> -->
 	<!-- Bootstrap JS-->
-<!-- 	<script src="vendor/bootstrap-4.1/popper.min.js"></script>
+	<!-- 	<script src="vendor/bootstrap-4.1/popper.min.js"></script>
 	<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
 	Vendor JS      
 	<script src="vendor/slick/slick.min.js">
@@ -286,11 +309,11 @@
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
 	<script src="vendor/chartjs/Chart.bundle.min.js"></script>
 	<script src="vendor/select2/select2.min.js"> -->
-		
+
 	</script>
 
 	<!-- Main JS-->
-<!-- 	<script src="js/main.js"></script> -->
+	<!-- 	<script src="js/main.js"></script> -->
 
 </body>
 </html>
