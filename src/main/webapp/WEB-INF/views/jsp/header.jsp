@@ -51,7 +51,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
    <%--   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/createAcc_1.css" type="text/css"/> --%>
     <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/createAcc_2.css" type="text/css" media = "all"/> --%>
@@ -92,7 +92,7 @@
                                         <a class="ms-label  " href="https://canifa.com/nu/danh-muc-san-pham.html">
                                             Nữ </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
-                                        <div class="ms-submenu col-xs-12 sub_left" id="submenu-2">
+                                        <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-2">
                                             <div class="ms-content">
                                                 <div class="ms-maincontent">
 
@@ -190,16 +190,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </li>
                                     <li data="" class="ms-level0 nav-29 " id="nav-29">
                                         <!-- Edited by Thành -->
                                         <!-- endl-->
-                                        <a class="ms-label  " href="https://canifa.com/nam/danh-muc-san-pham.html">
+                                        <a class="ms-label  " href="${pageContext.request.contextPath}/products/all">
                                             Nam </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
-                                        <div class="ms-submenu col-xs-12 sub_left" id="submenu-29">
+                                        <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-29">
                                             <div class="ms-content">
                                                 <div class="ms-maincontent">
 
@@ -291,7 +291,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </li>
                                     <li data="" class="ms-level0 nav-4 " id="nav-4">
@@ -300,7 +300,7 @@
                                         <a class="ms-label  " href="https://canifa.com/girl/danh-muc-san-pham.html">
                                             Bé gái </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
-                                        <div class="ms-submenu col-xs-12 sub_left" id="submenu-4">
+                                        <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-4">
                                             <div class="ms-content">
                                                 <div class="ms-maincontent">
 
@@ -401,7 +401,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </li>
                                     <li data="" class="ms-level0 nav-3 " id="nav-3">
@@ -410,7 +410,7 @@
                                         <a class="ms-label  " href="https://canifa.com/boy/danh-muc-san-pham.html">
                                             Bé trai </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
-                                        <div class="ms-submenu col-xs-12 sub_left" id="submenu-3">
+                                        <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-3">
                                             <div class="ms-content">
                                                 <div class="ms-maincontent">
 
@@ -504,7 +504,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </li>
                                     <li data="" class="ms-level0 nav-30 " id="nav-30">
@@ -513,7 +513,7 @@
                                         <a class="ms-label  " href="https://canifa.com/so-sinh/boy.html">
                                             Sơ sinh </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
-                                        <div class="ms-submenu col-xs-12 sub_left" id="submenu-30">
+                                        <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-30">
                                             <div class="ms-content">
                                                 <div class="ms-maincontent">
 
@@ -638,7 +638,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </li>
                                     <li data="" class="ms-level0 nav-33 " id="nav-33">
@@ -647,7 +647,7 @@
                                         <a class="ms-label  ">
                                             <span style="color: #da291c;">Mới</span> </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
-                                        <div class="ms-submenu col-xs-12 sub_left" id="submenu-33">
+                                        <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-33">
                                             <div class="ms-content">
                                                 <div class="ms-maincontent">
 
@@ -685,7 +685,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </li>
                                     <li data="" class="ms-level0 nav-32 " id="nav-32">
@@ -694,7 +694,7 @@
                                         <a class="ms-label  ">
                                             Giảm giá </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
-                                        <div class="ms-submenu col-xs-12 sub_left" id="submenu-32">
+                                        <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-32">
                                             <div class="ms-content">
                                                 <div class="ms-maincontent">
 
@@ -748,7 +748,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </li>
                                 </ul>
@@ -909,7 +909,7 @@
                                         </div>
                                     </div>
 
-                                    <script type="text/javascript">
+                                   <!--  <script type="text/javascript">
                                         jQuery(document).ready(function () {
 
 
@@ -985,13 +985,13 @@
                                             /*freeshippingbar*/
 
                                         });
-                                    </script>
+                                    </script> -->
                                 </div>
 
                             </div>
                         </div>
 
-                        <script type="text/javascript">
+                       <!--  <script type="text/javascript">
 
                             jQuery('html').click(function () {
                                 jQuery('#cart-drop-down').removeClass('show');
@@ -1024,7 +1024,7 @@
                                 jQuery(this).fadeOut('slow');
                             });
 
-                        </script>
+                        </script> -->
                     </div>
 
                 </div>

@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html>
@@ -31,44 +33,42 @@
 	</div> --%>
 
 	<br />
-
-	<%-- 	<table border="1" style="width: 100%">
-		<tr>
-			<th>Product Code</th>
-			<th>Product Name</th>
-			<th>Quantity</th>
-			<th>Price</th>
-			<!-- <th>Amount</th> -->
-		</tr>
-		<c:forEach var="map" items="${myCartItems}">
+	<form:form method="POST"
+		action="${pageContext.request.contextPath}/cart/order"
+		modelAttribute="user">
+		<table border="1" style="width: 100%">
 			<tr>
-			<div class="cart_box">
-				<div class="message">
-					<div class="list_img">
-						<img
-							src="${pageContext.request.contextPath}/resources/pages/images/pi1.jpg"
-							class="img-responsive" alt="">
-					</div>
-					<div class="list_desc">
-						<td>
-						<a href="#"><c:out value="${map.value.product.id}" /></a>
-						</td>
-						<td><a href="#"><c:out value="${map.value.product.name}" /></a>
-						</td>
-						<td><a href="#"><c:out value="${map.value.quantity}" /></a>
-						</td>
-						<c:out value="${map.value.quantity}" />
-						x $
-						<td><c:out value="${map.value.product.price}" /> = <span
-							class="actual"> $<c:out
-									value="${map.value.quantity * map.value.product.price}" /></span></td>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
+				<th>Product Code</th>
+				<th>Product Name</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<!-- <th>Amount</th> -->
 			</tr>
-		</c:forEach>
-		       <c:forEach items="${orderInfo.details}" var="orderDetailInfo">
+			<c:forEach var="map" items="${myCartItems}">
+				<tr>
+					<div class="cart_box">
+						<div class="message">
+
+							<div class="list_desc">
+								<td><a href="#"><c:out value="${map.value.product.id}" /></a>
+								</td>
+								<td><a href="#"><c:out
+											value="${map.value.product.name}" /></a></td>
+								<td><a href="#"><c:out value="${map.value.quantity}" /></a>
+								</td>
+								<c:out value="${map.value.quantity}" />
+								x $
+								<td><c:out
+										value="${map.value.product.processedPrice != 0 ? map.value.product.processedPrice : map.value.product.price}" />
+									= <span class="actual"> $<c:out
+											value="${map.value.quantity *map.value.product.processedPrice != 0 ? map.value.product.processedPrice : map.value.product.price}" /></span></td>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</tr>
+			</c:forEach>
+			<%--  <c:forEach items="${orderInfo.details}" var="orderDetailInfo">
            <tr>
                <td>${orderDetailInfo.productCode}</td>
                <td>${orderDetailInfo.productName}</td>
@@ -80,11 +80,32 @@
                 <fmt:formatNumber value="${orderDetailInfo.amount}" type="currency"/>
                </td>  
            </tr>
-       </c:forEach>
-	</table> --%>
+       </c:forEach> --%>
+		</table>
+		<div class="total_right">
+			Total: $
+			<c:out value="${sessionScope.myCartTotal}" />
+		</div>
 
+		<input type="submit" value="Order" />
+	</form:form>
+	<form:form method="POST"
+		action="${pageContext.request.contextPath}/cart/addVoucher"
+		modelAttribute="voucher">
+		<form:input path="voucherCode" value="${voucher.getVoucherCode()}" />
+		<div class="total_right">
+			<c:forEach items="${voucherList}" var="voucher">
+				Pay: ${voucher.discountPercentage }
+			</c:forEach>
+			Discount: "${voucher.discountPercentage}"
+		</div>
 
-	<div id="ajaxcart-load-ajax" style="display: none;">
+		<div>Pay: ${voucher.discountPercentage != 0 ? sessionScope.myCartTotal * voucher.discountPercentage : sessionScope.myCartTotal}
+		<input type="submit" value="Enter" />
+		
+		</div>
+	</form:form>
+	<%-- <div id="ajaxcart-load-ajax" style="display: none;">
 		<div id="load" class="ajaxcart-overlay">&nbsp;</div>
 		<div id="ajaxcart-loading" class="ajaxcart-loading">
 			<img alt="Đang tải..."
@@ -107,6 +128,11 @@
 		<!-- End: Added by Daniel - 02/04/2015 - Top links buttons after login from OSC -->
 		<li class="payment_buttons"></li>
 		<li class="address-order">
+			<form method = "post" name = "form12">
+				<div>
+
+				</div>
+			</form>
 			<form id="one-step-checkout-form" method="post" name = "form1"
 				action="${pageContext.request.contextPath}/home">
 				<div class="checkout-section-header">
@@ -363,12 +389,14 @@
 
 				</div>
 				<!-- Begin of Discount section -->
-
+				</form>
+				<form:form id="one-step-checkout-form" method="POST" action="/addUser" modelAttribute="voucher">
+				<!-- <form id="one-step-checkout-form" action="s" method = "post" name = "form1"> -->
 				<div class="section-discount" name = "discount">
 					<div class="onestepcheckout-discount">
-
+						<form:input path="name"/>
 						<div class="onestepcheckout-discount-title">Mã giảm giá</div>
-
+						<form:input path="voucherCode" value="${voucher.getVoucherCode()}" />
 						<div class="discount-form">
 							<input type="hidden" name="remove"
 								id="remove-coupon-onestepcheckout" value="0">
@@ -376,9 +404,8 @@
 								<input class="input-text" id="coupon_code_onestepcheckout"
 									autocomplete="off" name="coupon_code" value="" required=""
 									placeholder="Điền mã giảm giá nếu có"> 
-									<a href="./deleteUser/$value">Delete</a><span
-									class="highlight"></span> 
 									
+									<input type="submit" name="action" value="Enter" />
 									<span class="bar">
 									</span>
 									 <label
@@ -594,8 +621,8 @@
 
 
 
-
-			</form>
+			 </form:form>
+			<!-- </form> -->
 		</li>
 	</ol>
 	</div>
@@ -651,5 +678,5 @@
 
 	<iframe src="about:blank" frameborder="0" style="display: none;"></iframe>
 
-</body>
+</body> --%>
 </html>

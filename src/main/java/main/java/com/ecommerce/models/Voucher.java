@@ -6,10 +6,14 @@ public class Voucher {
 	private double discountPercentage;
 	
 	public Voucher(int voucherID, String voucherCode, double discountPercentage) {
-		super();
 		this.voucherID = voucherID;
 		this.voucherCode = voucherCode;
+		
 		this.discountPercentage = discountPercentage;
+		System.out.println(discountPercentage + " //" + this.discountPercentage);
+	}
+	public Voucher() {
+		// TODO Auto-generated constructor stub
 	}
 	public int getVoucherID() {
 		return voucherID;

@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,11 +19,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import main.java.com.ecommerce.models.Cart;
 import main.java.com.ecommerce.models.Order;
 import main.java.com.ecommerce.models.Product;
+import main.java.com.ecommerce.models.Voucher;
 import main.java.com.ecommerce.models.ExtendedUser;
 import main.java.com.ecommerce.services.CartService;
 import main.java.com.ecommerce.services.CartServiceImpl;
 import main.java.com.ecommerce.services.OrderService;
 import main.java.com.ecommerce.services.ProductService;
+import main.java.com.ecommerce.services.VoucherService;
 
 @Controller
 @RequestMapping(value = "/cart")
@@ -46,6 +49,9 @@ public class CartController {
 	private OrderService orderService;
 	@Autowired
 	private CartServiceImpl cartService;
+	@Autowired
+	private VoucherService voucherService;
+	
 	HashMap<Long, Cart> cartItemsMap;
 
 //		@RequestMapping
@@ -119,13 +125,14 @@ public class CartController {
 	public double totalPrice(HashMap<Long, Cart> cartItems) {
 		int count = 0;
 		for (Map.Entry<Long, Cart> list : cartItems.entrySet()) {
-			count += list.getValue().getProduct().getPrice() * list.getValue().getQuantity();
+			count += list.getValue().getProduct().getProcessedPrice() != 0 ? list.getValue().getProduct().getProcessedPrice() : list.getValue().getProduct().getPrice() * list.getValue().getQuantity();
 		}
 		return count;
 	}
 
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String get(HttpServletRequest request, ModelMap mm) {
+	public String get(HttpServletRequest request, ModelMap mm, HttpSession session) {
+		mm.put("voucher", new Voucher());
 		mm.put("myCartItems", cartItemsMap);
 		int len =  cartItemsMap.entrySet().size();
 		for (Map.Entry<Long, Cart> entry : cartItemsMap.entrySet()) {
@@ -143,6 +150,8 @@ public class CartController {
 //			orderService.add(order);
 			// ...
 		}
+		session.setAttribute("myCartTotal", totalPrice(cartItemsMap));
+		mm.put("voucherList",voucherService.listOfVoucher());
 		return "order";
 	}
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
@@ -166,5 +175,25 @@ public class CartController {
 		}
 		return "order";
 	}
+    @RequestMapping(value = "/addVoucher", method = RequestMethod.POST)
+    public String doDddVocher(@ModelAttribute Voucher voucher, ModelMap model) {
+            //model.put("voucher", new Voucher());
+            System.out.println(voucher.getVoucherCode());
+            if(voucherService.isContain(voucher.getVoucherCode())) {
+            	Voucher voucher1 = voucherService.getByCode(voucher.getVoucherCode());
+            	System.out.println(voucher1.getDiscountPercentage());
+            	model.put("voucher",voucher1);
+            	model.put("voucherList",voucherService.listOfVoucher());
+            	voucher1.setDiscountPercentage(voucher1.getDiscountPercentage());
+            }
+        return "redirect:/cart/order";
+    }
+    @RequestMapping(value = "/addVoucher", method = RequestMethod.GET)
+    public String addVocher(@ModelAttribute Voucher voucher, ModelMap model) {
+            model.put("voucher", new Voucher());
+            
+        return "order";
+    }
+    
 
 }

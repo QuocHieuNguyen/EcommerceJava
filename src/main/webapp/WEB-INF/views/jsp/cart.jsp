@@ -1,4 +1,5 @@
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -6,13 +7,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Cart </title>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href='<c:url value="/resource/css/styles.css" />' type="text/css" media="screen" />
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src='<c:url value="${pageContext.request.contextPath}/resource/js/controllers.js" />'></script>
-<script src='<c:url value="${pageContext.request.contextPath}/resource/js/scripts.js" />'></script>
+<title>Cart</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href='<c:url value="/resource/css/styles.css" />'
+	type="text/css" media="screen" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script
+	src='<c:url value="${pageContext.request.contextPath}/resource/js/controllers.js" />'></script>
+<script
+	src='<c:url value="${pageContext.request.contextPath}/resource/js/scripts.js" />'></script>
 </head>
 <body>
 	<section>
@@ -25,23 +32,23 @@
 	</section>
 
 	<section class="container" ng-app="cartApp">
-		<div ng-controller="cartController" ng-init="initCartId('${cartId}')">
-			<div>
-				<a class="btn btn-danger pull-left" ng-click="clearCart()"> <span
-					class="glyphicon glyphicon-remove-sign"></span> Clear Cart
-				</a> <a href="#" class="btn btn-success pull-right"> <span
-					class="glyphicon-shopping-cart glyphicon"></span> Check out
-				</a>
-			</div>
-			<table class="table table-hover">
-				<tr>
-					<th>Product</th>
-					<th>Quantity</th>
-					<th>Unit price</th>
-					<th>Price</th>
-					<th>Action</th>
-				</tr>
-				<tr ng-repeat="item in cart.cartItems">
+		<%-- <div ng-controller="cartController" ng-init="initCartId('${cartId}')">
+			<div> --%>
+		<a class="btn btn-danger pull-left" href ="d" > <span
+			class="glyphicon glyphicon-remove-sign"></span> Clear Cart
+		</a> <a href="#" class="btn btn-success pull-right"> <span
+			class="glyphicon-shopping-cart glyphicon"></span> Check out
+		</a>
+		</div>
+		<table class="table table-hover">
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Unit price</th>
+				<th>Price</th>
+				<th>Action</th>
+			</tr>
+			<!-- <tr ng-repeat="item in cart.cartItems">
 					<td>{{item.product.productId}}-{{item.product.name}}</td>
 					<td>{{item.quantity}}</td>
 					<td>{{item.product.unitPrice}}</td>
@@ -56,17 +63,63 @@
 					<th>Grand Total</th>
 					<th>{{cart.grandTotal}}</th>
 					<th></th>
-				</tr>
+				</tr> -->
+			<tr>
+				<c:forEach var="map" items="${sessionScope.myCartItems}">
 
-			</table>
-			<a href="<spring:url value="/products" />" class="btn btn-success">
-					<span class="glyphicon-circle-arrow-left glyphicon"></span> continue shopping
-			</a>
+					<td>
+					<c:out value="${map.value.product.name}" /></a>
+						</td>
+					<td><c:out value="${map.value.quantity}" /> x $</td>
+					<td><c:out value="${map.value.product.processedPrice != 0 ? map.value.product.processedPrice : map.value.product.price}" /> = $</td>
+					<td><c:out
+							value="${map.value.quantity * map.value.product.processedPrice != 0 ? map.value.product.processedPrice : map.value.product.price}" /></span></td>
+					<td><a href="${pageContext.request.contextPath}/cart/remove/${map.value.product.id}.html">Remove item</a></td>
+
+				</c:forEach>
+			</tr>
+		</table>
+		Free Shipping
+		<div class="clearfix"></div>
+		<div class="total_right">
+			Total: $
+			<c:out value="${sessionScope.myCartTotal}" />
 		</div>
+		<div class="clearfix"></div>
+		<div class="total_right">
+			VAT (10%):
+			<c:out value="${sessionScope.myCartTotal * 0.1}" />
+		</div>
+		<div class="clearfix"></div>
+		<div class="total_right">
+			Pay: $
+			<c:out
+				value="${sessionScope.myCartTotal + (sessionScope.myCartTotal * 0.1)}" />
+		</div>
+		<div class="clearfix"></div>
+		</div>
+		<div class="login_buttons">
+			<div class="check_button">
+				<a href="${pageContext.request.contextPath}/cart/order">Check
+					out</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+
+		</table>
+		<a href="<spring:url value="/products" />" class="btn btn-success">
+			<span class="glyphicon-circle-arrow-left glyphicon"></span> continue
+			shopping
+		</a>
+		</div>
+
 	</section>
+
+
+
 </body>
-</html> --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+</html>
+<%--  <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -76,9 +129,9 @@
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include> 
 
-<%-- 	<br />
+	<br />
 	<br />
 
 	<div class="container">
@@ -146,7 +199,7 @@
 
 	<br />
 	<br /> --%>
-	<div class="widget widget-static-block"></div>
+<%-- <div class="widget widget-static-block"></div>
 <div class="widget widget-static-block"></div>
 <div class="widget widget-static-block"></div>
 
@@ -269,7 +322,8 @@
     </td>
     <td class="t-total" data-title="Thành tiền:"><p class="product-detail-price price"> <span class="price">199.000₫</span></p></td>
     <td class="t-remove last">
-        <a href="https://canifa.com/checkout/cart/delete/id/7325316/form_key/E4FiFYojnFOAySX6/uenc/aHR0cHM6Ly9jYW5pZmEuY29tL2NoZWNrb3V0L2NhcnQv/" title="Xóa sản phẩm" class="btn-remove btn-remove2">
+    ng-click="removeFromCart(item.product.productId)"
+       <!--  <a href="https://canifa.com/checkout/cart/delete/id/7325316/form_key/E4FiFYojnFOAySX6/uenc/aHR0cHM6Ly9jYW5pZmEuY29tL2NoZWNrb3V0L2NhcnQv/" title="Xóa sản phẩm" class="btn-remove btn-remove2"> -->
         Xóa</a>
     </td>
     
@@ -456,7 +510,7 @@
 
 <div id="criteo-tags-div" style="display: none;"></body>
 
-	<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
+	<jsp:include page="footer.jsp"></jsp:include>
 
-</body>
+</body> --%>
 </html>

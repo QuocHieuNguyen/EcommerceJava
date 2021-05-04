@@ -187,23 +187,7 @@
                                 <i class="ajax-loader large animate-spin"></i>
                             </p>
                         </div>
-                        <div id="after-loading-success-message">
-                            <div class="background-overlay"></div>
-                            <div id="success-message-container" class="loader">
-                                <div class="msg-box">Sản phẩm đã được thêm vào giỏ hàng.</div>
-                                <div class="actions">
-                                    <button type="button" name="finish_and_checkout" id="finish_and_checkout"
-                                        class="button btn-cart">
-
-                                        Thanh toán ngay
-                                    </button>
-                                    <button type="button" name="continue_shopping" id="continue_shopping"
-                                        class="button btn-continue">
-
-                                        Tiếp tục </button>
-                                </div>
-                            </div>
-                        </div>
+                       
                         <script type='text/javascript'>
                             jQuery('#finish_and_checkout').click(function () {
                                 try {
