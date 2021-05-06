@@ -89,7 +89,7 @@
                                     <li data="" class="ms-level0 nav-2 first  " id="nav-2">
                                         <!-- Edited by Thành -->
                                         <!-- endl-->
-                                        <a class="ms-label  " href="https://canifa.com/nu/danh-muc-san-pham.html">
+                                        <a class="ms-label  " href="${pageContext.request.contextPath}/products/all">
                                             Nữ </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
                                         <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-2">
@@ -297,7 +297,7 @@
                                     <li data="" class="ms-level0 nav-4 " id="nav-4">
                                         <!-- Edited by Thành -->
                                         <!-- endl-->
-                                        <a class="ms-label  " href="https://canifa.com/girl/danh-muc-san-pham.html">
+                                        <a class="ms-label  " href="${pageContext.request.contextPath}/products/all">
                                             Bé gái </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
                                         <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-4">
@@ -407,7 +407,7 @@
                                     <li data="" class="ms-level0 nav-3 " id="nav-3">
                                         <!-- Edited by Thành -->
                                         <!-- endl-->
-                                        <a class="ms-label  " href="https://canifa.com/boy/danh-muc-san-pham.html">
+                                        <a class="ms-label  " href="${pageContext.request.contextPath}/products/all">
                                             Bé trai </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
                                         <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-3">
@@ -510,7 +510,7 @@
                                     <li data="" class="ms-level0 nav-30 " id="nav-30">
                                         <!-- Edited by Thành -->
                                         <!-- endl-->
-                                        <a class="ms-label  " href="https://canifa.com/so-sinh/boy.html">
+                                        <a class="ms-label  " href="${pageContext.request.contextPath}/products/all">
                                             Sơ sinh </a>
                                         <span class="mb-label glyphicon glyphicon-plus">&nbsp;</span>
                                         <!-- <div class="ms-submenu col-xs-12 sub_left" id="submenu-30">

@@ -37,7 +37,7 @@ public class JdbcOrderDAO extends JdbcDaoSupport{
 	    }
 	    public void update(Order order) {
 	        String SQL = "update customerorder set cartID = ?, userID = ?, status = ? where id = ?";
-	        getJdbcTemplate().update(SQL,order.getCart().getId(),order.getUser().getId(), order.getStatus());
+	        getJdbcTemplate().update(SQL,order.getCart().getId(),order.getUser().getId(), order.getStatus(), Integer.parseInt(order.getId()));
 	        return;
 	    }
 

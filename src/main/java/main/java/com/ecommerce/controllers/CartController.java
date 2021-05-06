@@ -1,12 +1,15 @@
 package main.java.com.ecommerce.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,7 @@ import main.java.com.ecommerce.services.CartServiceImpl;
 import main.java.com.ecommerce.services.OrderService;
 import main.java.com.ecommerce.services.ProductService;
 import main.java.com.ecommerce.services.VoucherService;
+import main.java.com.ecommerce.userjdbctemplate.UserJDBCTemplate;
 
 @Controller
 @RequestMapping(value = "/cart")
@@ -59,8 +63,23 @@ public class CartController {
 //			//return "redirect:/cart/"+request.getSession(true).getId();
 //			return "cart";
 //		}
+	private ApplicationContext context = null;
+    private UserJDBCTemplate userJDBCTemplate = null;
+
+    public CartController() {
+    
+    	try {
+            context = new ClassPathXmlApplicationContext("/database-ref.xml");
+            userJDBCTemplate = (UserJDBCTemplate) context.getBean("userJDBCTemplate");
+    	}catch (Exception e) {
+    		e.printStackTrace();
+			// TODO: handle exception
+		}
+
+    }
 	@RequestMapping(value = "/add/{productId}", method = RequestMethod.GET)
 	public String viewAdd(ModelMap mm, HttpSession session, @PathVariable("productId") long productId) {
+		
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
 		if (cartItems == null) {
 			cartItems = new HashMap<>();
@@ -151,29 +170,37 @@ public class CartController {
 			// ...
 		}
 		session.setAttribute("myCartTotal", totalPrice(cartItemsMap));
-		mm.put("voucherList",voucherService.listOfVoucher());
+		
 		return "order";
 	}
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	public String post(HttpServletRequest request, ModelMap mm) {
-		mm.put("myCartItems", cartItemsMap);
+		//mm.put("myCartItems", cartItemsMap);
+		mm.put("voucher", new Voucher());
 		int len =  cartItemsMap.entrySet().size();
 		for (Map.Entry<Long, Cart> entry : cartItemsMap.entrySet()) {
 			Long key = entry.getKey();
 			Cart value = entry.getValue();
 			value.setId(cartService.carts().get(cartService.carts().size() - len).getId());
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			List<ExtendedUser> listUsers = userJDBCTemplate.listUsers();
+			System.out.println("list " + listUsers.size());
 			ExtendedUser e = new ExtendedUser();
-			e.setUsername(authentication.getName());
+			for (int i = 0; i < listUsers.size(); i++) {
+				System.out.println(listUsers.get(i).getUsername());
+				if(listUsers.get(i).getUsername() != null &&listUsers.get(i).getUsername().equals(authentication.getName())) {
+					e = listUsers.get(i);
+				}
+			}
+			
 			System.out.println(value.getId());
 			Order order = new Order();
 			order.setUser(e);
-			e.setId(5);
 			order.setCart(value);
 			orderService.add(order);
 			// ...
 		}
-		return "order";
+		return "redirect:/home";
 	}
     @RequestMapping(value = "/addVoucher", method = RequestMethod.POST)
     public String doDddVocher(@ModelAttribute Voucher voucher, ModelMap model) {
@@ -186,13 +213,35 @@ public class CartController {
             	model.put("voucherList",voucherService.listOfVoucher());
             	voucher1.setDiscountPercentage(voucher1.getDiscountPercentage());
             }
-        return "redirect:/cart/order";
+        return "order";
     }
     @RequestMapping(value = "/addVoucher", method = RequestMethod.GET)
     public String addVocher(@ModelAttribute Voucher voucher, ModelMap model) {
-            model.put("voucher", new Voucher());
-            
-        return "order";
+            //model.put("voucher", new Voucher());
+    	System.out.println("add Voucher Get");
+    		int len =  cartItemsMap.entrySet().size();
+    		for (Map.Entry<Long, Cart> entry : cartItemsMap.entrySet()) {
+    			Long key = entry.getKey();
+    			Cart value = entry.getValue();
+    			value.setId(cartService.carts().get(cartService.carts().size() - len).getId());
+    			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    			List<ExtendedUser> listUsers = userJDBCTemplate.listUsers();
+    			System.out.println("list " + listUsers.size());
+    			ExtendedUser e = new ExtendedUser();
+    			for (int i = 0; i < listUsers.size(); i++) {
+    				System.out.println(listUsers.get(i).getUsername());
+    				if(listUsers.get(i).getUsername() != null &&listUsers.get(i).getUsername().equals(authentication.getName())) {
+    					e = listUsers.get(i);
+    				}
+    			}
+    			
+    			System.out.println(value.getId());
+    			Order order = new Order();
+    			order.setUser(e);
+    			order.setCart(value);
+    			// ...
+    		}
+        return "redirect:/cart/order";
     }
     
 

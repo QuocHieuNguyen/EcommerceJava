@@ -105,6 +105,7 @@
 		
 		</div>
 	</form:form>
+	<a href ="${pageContext.request.contextPath}/paypal" style="background-color:powderblue;"> Pay with Paypal</a>
 	<%-- <div id="ajaxcart-load-ajax" style="display: none;">
 		<div id="load" class="ajaxcart-overlay">&nbsp;</div>
 		<div id="ajaxcart-loading" class="ajaxcart-loading">
@@ -114,6 +115,7 @@
 		</div>
 		<div id="form-paypal" style="display: none;" class="form-paypal"></div>
 	</div>
+	
 
 
 

@@ -30,4 +30,12 @@ public class OrderService {
 
     	jdbcOrderDAO.update(order);
     }
+    public Order getOrder(int id) {
+    	for (int i = 0; i < jdbcOrderDAO.listOrders().size(); i++) {
+			if(id == Integer.parseInt(jdbcOrderDAO.listOrders().get(i).getId()) ) {
+				return jdbcOrderDAO.listOrders().get(i);
+			}
+		}
+    	return null;
+    }
 }

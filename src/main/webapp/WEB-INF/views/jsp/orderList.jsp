@@ -236,8 +236,8 @@
 												<th>ID</th>
 												<th>name</th>
 												<th>cartID</th>
-												<th>edit</th>
-												<th>delete</th>
+												<th>status</th>
+												<th>accept & reject</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -246,8 +246,9 @@
 													<td>${order.id}</td>
 													<td>${order.user.username}</td>
 													<td>${order.cart.id}</td> 
-													<td><a href="./editProduct/${promotion.id}">Edit</a></td>
-													<td><a href="./deleteProduct/${promotion.id}">Delete</a></td>
+													<td>${order.status}</td>
+													<td><a href="./acceptOrder/${order.id}">Accept</a>
+													<div><a href="./rejectOrder/${order.id}">Reject</a></div></td>
 												</tr>
 											</c:forEach>
 										</tbody>

@@ -4,7 +4,7 @@ public class Order {
 	private String id;
 	private ExtendedUser user;
 	private Cart cart;
-	private String status;
+	private String status = "Pending";
 
 	public Order(String id, ExtendedUser user, Cart cart) {
 		super();
