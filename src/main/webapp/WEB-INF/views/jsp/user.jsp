@@ -8,7 +8,7 @@
 	<h2>Welcome: ${pageContext.request.userPrincipal.name}</h2>
 
 	<a href="<c:url value="/admin/adminHome" />">Admin Page</a> <br/>
-
+	<a href="<c:url value="/home" />">Home Page</a> <br/>
 	<form action="<c:url value="/j_spring_security_logout" />" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="submit" value="Logout" />
